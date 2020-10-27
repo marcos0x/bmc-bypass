@@ -1,0 +1,20 @@
+{
+  "name": "bmcbypass",
+  "version": 2,
+  "alias": "bmcbypass",
+  "builds": [
+    {"src": "src/app.js", "use": "@now/node-server" }
+  ],
+  "env": {
+    "SECRET": "secret"
+  },
+  "routes": [{
+    "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
+    },
+    "src": "/.*",
+    "dest": "/src/app.js"
+  }]
+}
