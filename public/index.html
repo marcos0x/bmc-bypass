@@ -80,6 +80,8 @@
     </main>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="static/js/main.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){$('#form').submit(function(){var data={url:$('#input_url').val(),cuils:$('#input_cuils').val().split('\n').join(',').replace(/\s/g,''),emails:$('#input_emails').val().split('\n').join(',').replace(/\s/g,'')};$('#links .alert').hide();$('#links .loading').addClass('d-flex').removeClass('d-none');$('#links .list').html('');$.ajax({url:'/api/links',type:'post',dataType:'json',contentType:'application/json',data:JSON.stringify(data),success:function(response){var links=response.links;$('#links .loading').removeClass('d-flex').addClass('d-none');$('#links .alert-success').show();$('#links .list').html(links.map(function(link){return '<div class="link"><a href="'+link+'" target="_blank">'+link+'</a></div>'}).join(''))},error:function(){$('#links .loading').removeClass('d-flex').addClass('d-none');$('#links .alert-danger').show()}});return false})});
+    </script>
   </body>
 </html>
