@@ -171,3 +171,5 @@ secrets.tar
 
 package.json.lock
 yarn.lock
+
+.vercel
