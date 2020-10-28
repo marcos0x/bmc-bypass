@@ -7,8 +7,7 @@ class Api {
 
   getLink(url, cuil, mail) {
     const data = crypto.encrypt(cuil+'|'+mail+'|'+this.date);
-    console.log({ encrypt: cuil+'|'+mail+'|'+this.date, data });
-    return url+'?data='+data+'&utm_source=Email&utm_medium=Canales_Adquisicion';
+    return encodeURIComponent(url+'?data='+data+'&utm_source=Email&utm_medium=Canales_Adquisicion');
   }
 
   createLinks(req) {
