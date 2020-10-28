@@ -6,8 +6,8 @@ class Api {
   }
 
   getLink(url, cuil, mail) {
-    const data = crypto.encrypt(cuil+'|'+mail+'|'+this.date);
-    return encodeURIComponent(url+'?data='+data+'&utm_source=Email&utm_medium=Canales_Adquisicion');
+    const data = encodeURIComponent(crypto.encrypt(cuil+'|'+mail+'|'+this.date));
+    return url+'?data='+data+'&utm_source=Email&utm_medium=Canales_Adquisicion';
   }
 
   createLinks(req) {

@@ -1,6 +1,6 @@
 {
   "name": "bmc-bypass",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Generador de Links",
   "private": true,
   "main": "src/app.js",
