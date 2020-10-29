@@ -32,18 +32,22 @@ label {
 }
 
 textarea.form-control {
-  min-height: 150px;
+  min-height: 120px;
 }
 
 .form-footer .btn {
   margin: 0 0 15px;
 }
 
+.datepicker {
+  background: #fff !important;
+}
+
 .links {
   border: 1px solid #ced4da;
   border-radius: .25rem;
   margin: 0 0 40px;
-  height: 465px;
+  height: 490px;
   font-size: 13px;
   display: flex;
   flex-direction: column;

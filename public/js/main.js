@@ -1,7 +1,11 @@
 $(document).ready(function () {
+  $('#input_date').val(new Date().toISOString().split('T')[0]);
+  $('#input_date_icon').on('click',function(){$('.datepicker').datepicker('show');});
+  $('.datepicker').datepicker({format:'yyyy-mm-dd',startDate:0,todayBtn:"linked",language:"es"});
   $('#form').submit(function(){
     var data = {
       url: $('#input_url').val(),
+      date: $('#input_date').val(),
       cuils: $('#input_cuils').val().split('\n').join(',').replace(/\s/g, ''),
       emails: $('#input_emails').val().split('\n').join(',').replace(/\s/g, ''),
     }

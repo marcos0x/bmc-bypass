@@ -5,8 +5,8 @@ class Api {
     this.date = new Date().toISOString().split('T')[0].split('-').join('');
   }
 
-  getLink(url, cuil, mail) {
-    const data = encodeURIComponent(crypto.encrypt(cuil+'|'+mail+'|'+this.date));
+  getLink(url, date, cuil, mail) {
+    const data = encodeURIComponent(crypto.encrypt(cuil+'|'+mail+'|'+date));
     return url+'?data='+data+'&utm_source=Email&utm_medium=Canales_Adquisicion';
   }
 
@@ -25,6 +25,7 @@ class Api {
         }
 
         let url = 'https://stg-bmc322.globant.com/tramiteonline/eresumen/';
+        let date =  this.date;
         const cuils = data.cuils.split(',');
         const emails = data.emails.split(',');
         let index = 0;
@@ -32,6 +33,10 @@ class Api {
 
         if (data.url) {
           url = data.url;
+        }
+
+        if (data.date) {
+          date = data.date.replace(/[^0-9]/g,'');
         }
 
         for (const cuil of cuils) {
@@ -42,7 +47,7 @@ class Api {
                   email = emails[index];
               }
 
-              links.push(this.getLink(url, cuil, email));
+              links.push(this.getLink(url, date, cuil, email));
           }
           index += 1;
         }
